@@ -1580,17 +1580,7 @@ require("./styles.css");
 var _dataset = _interopRequireDefault(require("./dataset.json"));
 var _dataset2 = _interopRequireDefault(require("./dataset2.json"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; } //Dataset imports
-//function that produces array of numbers from start to end
-function range(start, end) {
-  if (start === end) return [start];
-  return [start].concat(_toConsumableArray(range(start + 1, end)));
-}
+//Dataset imports
 
 //Fetches dictionary and converts into an array of strings
 var labels = _dataset.default.dataset.dimension.Alue.category.label;
@@ -1613,7 +1603,7 @@ var th2 = document.createElement('th');
 var th3 = document.createElement('th');
 var th4 = document.createElement('th');
 th1.innerText = "Municipality";
-th2.innerText = "population";
+th2.innerText = "Population";
 th3.innerText = "Employment amount";
 th4.innerText = "Employment-%";
 tr.appendChild(th1);
@@ -1624,7 +1614,7 @@ table_head.appendChild(tr);
 
 // Iterate thru data and add into table
 // Employment classes based on employment-%
-for (var idx in range(0, 309)) {
+for (var idx = 0; idx < values.length; idx++) {
   var _tr = document.createElement('tr');
   var td1 = document.createElement('td');
   var td2 = document.createElement('td');

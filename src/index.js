@@ -4,12 +4,6 @@ import "./styles.css";
 import data from "./dataset.json";
 import data2 from "./dataset2.json";
 
-//function that produces array of numbers from start to end
-function range(start, end) {
-  if(start === end) return [start];
-  return [start, ...range(start + 1, end)];
-}
-
 //Fetches dictionary and converts into an array of strings
 const labels = data.dataset.dimension.Alue.category.label;
 let label_strings = [];
@@ -31,7 +25,7 @@ let th2 = document.createElement('th');
 let th3 = document.createElement('th');
 let th4 = document.createElement('th')
 th1.innerText = "Municipality";
-th2.innerText = "population";
+th2.innerText = "Population";
 th3.innerText = "Employment amount";
 th4.innerText = "Employment-%";
 tr.appendChild(th1);
@@ -42,7 +36,7 @@ table_head.appendChild(tr);
 
 // Iterate thru data and add into table
 // Employment classes based on employment-%
-for(var idx in range(0,309)) {
+for(var idx = 0;idx < values.length;idx++) {
   let tr = document.createElement('tr');
   let td1 = document.createElement('td');
   let td2 = document.createElement('td');
