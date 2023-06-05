@@ -23,7 +23,7 @@ const values = data.dataset.value;
 const values2 = data2.dataset.value;
 const table_body = document.getElementById('table-body');
 const table_head = document.getElementById('table-head')
-/*
+
 //Insert header data into the table
 let tr = document.createElement('tr');
 let th1 = document.createElement('th');
@@ -31,7 +31,7 @@ let th2 = document.createElement('th');
 let th3 = document.createElement('th');
 let th4 = document.createElement('th')
 th1.innerText = "Municipality";
-th2.innerText = "Population";
+th2.innerText = "population";
 th3.innerText = "Employment amount";
 th4.innerText = "Employment-%";
 tr.appendChild(th1);
@@ -39,7 +39,7 @@ tr.appendChild(th2);
 tr.appendChild(th3);
 tr.appendChild(th4);
 table_head.appendChild(tr);
-*/
+
 // Iterate thru data and add into table
 // Employment classes based on employment-%
 for(var idx in range(0,309)) {
