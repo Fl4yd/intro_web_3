@@ -1,25 +1,16 @@
 import "./styles.css";
 
-
-async function getData() {
-  const url = './dataset.json';
-  const dataPromise = await fetch(url);
-  const dataJSON = await dataPromise.json();
-  dataJSON.forEach(city => {
-    let tr = document.createElement('tr');
-    let th1 = document.createElement('th');
-    let th2 = document.createElement('th');
-  });
-}
-
+//Dataset imports
 import data from "./dataset.json";
 import data2 from "./dataset2.json";
 
+//function that produces array of numbers from start to end
 function range(start, end) {
   if(start === end) return [start];
   return [start, ...range(start + 1, end)];
 }
 
+//Fetches dictionary and converts into an array of strings
 const labels = data.dataset.dimension.Alue.category.label;
 let label_strings = [];
 for(var key in labels) {
@@ -27,11 +18,13 @@ for(var key in labels) {
     label_strings.push(labels[key])
   }
 }
-
+// Fetch values for the table
 const values = data.dataset.value;
 const values2 = data2.dataset.value;
 const table_body = document.getElementById('table-body');
 const table_head = document.getElementById('table-head')
+
+//Insert header data into the table
 let tr = document.createElement('tr');
 let th1 = document.createElement('th');
 let th2 = document.createElement('th');
@@ -47,6 +40,8 @@ tr.appendChild(th3);
 tr.appendChild(th4);
 table_head.appendChild(tr);
 
+// Iterate thru data and add into table
+// Employment classes based on employment-%
 for(var idx in range(0,309)) {
   let tr = document.createElement('tr');
   let td1 = document.createElement('td');
