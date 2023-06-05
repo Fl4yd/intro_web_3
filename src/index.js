@@ -1,11 +1,14 @@
 import "./styles.css";
 
-//Dataset imports
-import data from "./dataset.json";
-import data2 from "./dataset2.json";
 
-//Fetches dictionary and converts into an array of strings
-const labels = data.dataset.dimension.Alue.category.label;
+async function makeTable() {
+  const response1 = await fetch('https://statfin.stat.fi/PxWeb/sq/4e244893-7761-4c4f-8e55-7a8d41d86eff');
+  const response2 = await fetch('https://statfin.stat.fi/PxWeb/sq/5e288b40-f8c8-4f1e-b3b0-61b86ce5c065')
+  const data = await response1.json();
+  const data2 = await response2.json();
+
+  const labels = data.dataset.dimension.Alue.category.label;
+
 let label_strings = [];
 for(var key in labels) {
   if(labels.hasOwnProperty(key)) {
@@ -36,6 +39,7 @@ table_head.appendChild(tr);
 
 // Iterate thru data and add into table
 // Employment classes based on employment-%
+
 for(var idx = 0;idx < values.length;idx++) {
   let tr = document.createElement('tr');
   let td1 = document.createElement('td');
@@ -58,3 +62,7 @@ for(var idx = 0;idx < values.length;idx++) {
   tr.appendChild(td4);
   table_body.appendChild(tr);
 }
+  
+
+}
+makeTable()
