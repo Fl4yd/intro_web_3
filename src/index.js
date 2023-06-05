@@ -23,7 +23,7 @@ const values = data.dataset.value;
 const values2 = data2.dataset.value;
 const table_body = document.getElementById('table-body');
 const table_head = document.getElementById('table-head')
-
+/*
 //Insert header data into the table
 let tr = document.createElement('tr');
 let th1 = document.createElement('th');
@@ -39,7 +39,7 @@ tr.appendChild(th2);
 tr.appendChild(th3);
 tr.appendChild(th4);
 table_head.appendChild(tr);
-
+*/
 // Iterate thru data and add into table
 // Employment classes based on employment-%
 for(var idx in range(0,309)) {
@@ -51,10 +51,11 @@ for(var idx in range(0,309)) {
   td1.innerText = label_strings[idx];
   td2.innerText = values[idx];
   td3.innerText = values2[idx];
-  td4.innerText = Math.round(values2[idx]/values[idx] * 10000)/100 + "%"
-  if (Math.round(values2[idx]/values[idx] * 10000)/100 > 45) {
+  let employment_rate = Math.round(values2[idx]/values[idx] * 10000)/100;
+  td4.innerText =  employment_rate + "%"
+  if (employment_rate > 45) {
     tr.setAttribute('id','emp1')
-  }else if (Math.round(values2[idx]/values[idx] * 10000)/100 < 25) {
+  }else if (employment_rate < 25) {
     tr.setAttribute('id','emp2')
   }
   tr.appendChild(td1);

@@ -1605,13 +1605,13 @@ var values = _dataset.default.dataset.value;
 var values2 = _dataset2.default.dataset.value;
 var table_body = document.getElementById('table-body');
 var table_head = document.getElementById('table-head');
-
+/*
 //Insert header data into the table
-var tr = document.createElement('tr');
-var th1 = document.createElement('th');
-var th2 = document.createElement('th');
-var th3 = document.createElement('th');
-var th4 = document.createElement('th');
+let tr = document.createElement('tr');
+let th1 = document.createElement('th');
+let th2 = document.createElement('th');
+let th3 = document.createElement('th');
+let th4 = document.createElement('th')
 th1.innerText = "Municipality";
 th2.innerText = "Population";
 th3.innerText = "Employment amount";
@@ -1621,11 +1621,11 @@ tr.appendChild(th2);
 tr.appendChild(th3);
 tr.appendChild(th4);
 table_head.appendChild(tr);
-
+*/
 // Iterate thru data and add into table
 // Employment classes based on employment-%
 for (var idx in range(0, 309)) {
-  var _tr = document.createElement('tr');
+  var tr = document.createElement('tr');
   var td1 = document.createElement('td');
   var td2 = document.createElement('td');
   var td3 = document.createElement('td');
@@ -1633,17 +1633,18 @@ for (var idx in range(0, 309)) {
   td1.innerText = label_strings[idx];
   td2.innerText = values[idx];
   td3.innerText = values2[idx];
-  td4.innerText = Math.round(values2[idx] / values[idx] * 10000) / 100 + "%";
-  if (Math.round(values2[idx] / values[idx] * 10000) / 100 > 45) {
-    _tr.setAttribute('id', 'emp1');
-  } else if (Math.round(values2[idx] / values[idx] * 10000) / 100 < 25) {
-    _tr.setAttribute('id', 'emp2');
+  var employment_rate = Math.round(values2[idx] / values[idx] * 10000) / 100;
+  td4.innerText = employment_rate + "%";
+  if (employment_rate > 45) {
+    tr.setAttribute('id', 'emp1');
+  } else if (employment_rate < 25) {
+    tr.setAttribute('id', 'emp2');
   }
-  _tr.appendChild(td1);
-  _tr.appendChild(td2);
-  _tr.appendChild(td3);
-  _tr.appendChild(td4);
-  table_body.appendChild(_tr);
+  tr.appendChild(td1);
+  tr.appendChild(td2);
+  tr.appendChild(td3);
+  tr.appendChild(td4);
+  table_body.appendChild(tr);
 }
 },{"./styles.css":"src/styles.css","./dataset.json":"src/dataset.json","./dataset2.json":"src/dataset2.json"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
